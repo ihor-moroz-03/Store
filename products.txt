@@ -1,7 +1,0 @@
-﻿Milk, $3.50, 1kg, consume in 10 days, produced on 10/26/2021
-Milk, $3.50, 1kg, consume in 10 days, produced on 10/26/2021
-Milk, $3.50, 1kg, consume in 10 days, produced on 10/26/2021
-Sausage, $2.00, 0.12kg, consume in 2 days, produced on 10/26/2021, quality: Highest, type: Pork
-Bread, $1.50, 0.3kg, consume in 3 days, produced on 10/26/2021
-Soda, $1.00, 0.5kg, consume in 1 days, produced on 10/26/2021
-Bread, $1.50, 0.3kg, consume in 3 days, produced on 10/26/2021
