@@ -27,9 +27,14 @@ namespace Store.Ordering
 
         public void Cancel() => _cart.ReturnAll();
 
-        public string Process()
+        public string Process(IEnumerable<IDiscount> discounts)
         {
-            throw new NotImplementedException();
+            discounts = discounts.Where(d => (int)d.TargetStatus <= (int)Placer.Status);
+            double price = _cart.Sum(
+                product => product.Price * discounts.Where(d => d.TargetCategory.Equals(product.Category)).Max()?.Rate ?? 1
+            );
+
+            return $"Order processed with final price of {price}\nProducts:\n{string.Join('\n', _cart)}";
         }
 
         public IEnumerator<IProduct> GetEnumerator() => _cart.GetEnumerator();

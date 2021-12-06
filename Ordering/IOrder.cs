@@ -22,7 +22,7 @@ namespace Store.Ordering
 
         string PaymentInfo { get; }
 
-        string Process();
+        string Process(IEnumerable<IDiscount> discounts);
 
         void Cancel();
     }
