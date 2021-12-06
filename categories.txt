@@ -1,0 +1,2 @@
+Good: ProductionDate, ConsumeIn
+Meat (Good): MeatType, Quality
