@@ -21,7 +21,7 @@ namespace Store.Products
             set
             {
                 if (_format.Validator?.Invoke(value) == false)
-                    throw new FormatException("Detail value format is wrong");
+                    throw new FormatException("Detail value format is invalid");
                 _value = value;
             }
         }
