@@ -12,7 +12,6 @@ namespace Store.Users
 
         IUserFactory UserFactory { get; }
 
-        void SetCustomerStatus(ICustomer customer, Status newStatus)
-            => (customer as Customer).Status = newStatus;
+        void SetCustomerStatus(ICustomer customer, Status newStatus);
     }
 }

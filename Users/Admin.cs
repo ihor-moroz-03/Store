@@ -26,5 +26,8 @@ namespace Store.Users
         public IUserData UserData { get; set; }
 
         public IUserFactory UserFactory { get; set; }
+
+        public void SetCustomerStatus(ICustomer customer, Status newStatus)
+            => (customer as Customer).Status = newStatus;
     }
 }
