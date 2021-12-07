@@ -9,5 +9,12 @@
 
         public string Username { get; }
         public int PasswordHash { get; }
+
+        public override bool Equals(object obj) =>
+            obj is IUser && Equals(obj as IUser);
+
+        public bool Equals(IUser other) => Username == other.Username;
+
+        public override int GetHashCode() => Username.GetHashCode();
     }
 }
