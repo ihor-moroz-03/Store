@@ -9,7 +9,7 @@ namespace Store.Users
 
         event EventHandler<IUser> OnRemoval;
 
-        bool Add(IUser user);
+        void Add(IUser user);
 
         bool Remove(IUser user);
 

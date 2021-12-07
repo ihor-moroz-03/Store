@@ -13,14 +13,11 @@ namespace Store.Users
 
         public event EventHandler<IUser> OnRemoval;
 
-        public bool Add(IUser user)
+        public void Add(IUser user)
         {
-            if (_users.Add(user))
-            {
-                OnAddition?.Invoke(this, user);
-                return true;
-            }
-            return false;
+            if (!_users.Add(user)) throw new ArgumentException("Such user already exists");
+
+            OnAddition?.Invoke(this, user);
         }
 
         public IEnumerator<IUser> GetEnumerator() => _users.GetEnumerator();

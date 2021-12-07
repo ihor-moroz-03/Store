@@ -43,7 +43,7 @@ namespace Store
         public ICustomer SignUp(string username, string password)
         {
             ICustomer customer = _userFactory.CreateUser<ICustomer>(username, password.GetHashCode());
-            if (!_userData.Add(customer)) throw new ArgumentException("Such user already exists");
+            _userData.Add(customer);
             return customer;
         }
     }
