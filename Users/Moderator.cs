@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Store.Ordering;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Store.Ordering;
 
 namespace Store.Users
 {

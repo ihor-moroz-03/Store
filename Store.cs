@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Store.Ordering;
 using Store.Products;
 using Store.Users;
-using Store.Ordering;
+using System;
+using System.Collections.Generic;
 
 namespace Store
 {
@@ -37,13 +33,17 @@ namespace Store
         IStorage IStoreHandles.Storage => _storage;
         IUserData IStoreHandles.UserData => _userData;
 
-        public bool SignIn<T>(string username, string password, out T user) where T : class, IUser
-            => _userData.TryGet(username, password.GetHashCode(), out user);
+        public T SignIn<T>(string username, string password) where T : class, IUser
+        {
+            if (_userData.TryGet(username, password.GetHashCode(), out T user))
+                return user;
+            throw new ArgumentException("Incorrect username or password");
+        }
 
         public ICustomer SignUp(string username, string password)
         {
             ICustomer customer = _userFactory.CreateUser<ICustomer>(username, password.GetHashCode());
-            _userData.Add(customer);
+            if (!_userData.Add(customer)) throw new ArgumentException("Such user already exists");
             return customer;
         }
     }

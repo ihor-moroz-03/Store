@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Store.Ordering;
 using Store.Products;
-using Store.Ordering;
+using System.Collections.Generic;
 
 namespace Store.Users
 {
