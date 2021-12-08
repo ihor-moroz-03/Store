@@ -6,24 +6,16 @@ namespace Store.Products
     class Category : ICategory
     {
         readonly HashSet<IDetailFormat> _formats;
+        readonly ICategory _parent;
 
         public Category(string name, IEnumerable<IDetailFormat> formats, ICategory parent)
         {
-            Children = new HashSet<ICategory>();
             Name = name;
             _formats = new(formats);
-            if (parent != null)
-            {
-                Parent = parent;
-                (Parent.Children as ISet<ICategory>).Add(this);
-            }
+            _parent = parent;
         }
 
         public string Name { get; set; }
-
-        public ICategory Parent { get; }
-
-        public IReadOnlySet<ICategory> Children { get; }
 
         public override bool Equals(object obj)
             => obj is Category && Name == (obj as Category).Name;
@@ -32,8 +24,8 @@ namespace Store.Products
 
         public IEnumerator<IDetailFormat> GetEnumerator()
         {
-            if (Parent != null)
-                foreach (IDetailFormat format in Parent)
+            if (_parent != null)
+                foreach (IDetailFormat format in _parent)
                     yield return format;
 
             foreach (IDetailFormat format in _formats)

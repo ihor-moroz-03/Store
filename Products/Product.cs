@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Store.Products
 {
-    class Product : IProduct
+    class Product : IProduct, IEquatable<Product>
     {
         readonly Dictionary<string, IDetail> _details;
 
@@ -14,7 +14,7 @@ namespace Store.Products
             _details = details.ToDictionary(detail => detail.Name);
         }
 
-        public string this[string detail]
+        string this[string detail]
         {
             get => _details[detail].Value;
             set => _details[detail].Value = value;
@@ -48,7 +48,9 @@ namespace Store.Products
 
         public override bool Equals(object obj) => obj is Product && Equals(obj as Product);
 
-        public bool Equals(IProduct other)
+        public bool Equals(IProduct other) => Equals(other as object);
+
+        public bool Equals(Product other)
         {
             foreach (string detail in _details.Keys)
                 if (!other.HasDetail(detail) || this[detail] != other[detail])

@@ -13,6 +13,6 @@ namespace Store.Users
 
         bool Remove(IUser user);
 
-        public bool TryGet<T>(string username, int passwordHash, out T user) where T : class, IUser;
+        bool TryGet<T>(string username, int passwordHash, out T user) where T : class, IUser;
     }
 }

@@ -28,7 +28,7 @@ namespace Store.Ordering
         {
             discounts = discounts.Where(d => (int)d.TargetStatus <= (int)Placer.Status);
             double price = _cart.Sum(
-                product => product.Price * discounts.Where(d => d.TargetCategory.Equals(product.Category)).Max()?.Rate ?? 1
+                product => product.Price * discounts.Where(d => d.TargetCategory.Name.Equals(product.Category)).Max()?.Rate ?? 1
             );
 
             return $"Order processed with final price of {price}\nProducts:\n{string.Join('\n', _cart)}";
