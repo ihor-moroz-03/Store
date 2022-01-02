@@ -1,0 +1,4 @@
+﻿[ProductionDate, date in mm/dd/yyyy format, \d{2}[/.]\d{2}[/.]\d{4}]
+[ConsumeIn, time until product is spoiled in days, \d+]
+[MeatType, Mutton, Beef, Pork or Chicken, Mutton|Beef|Pork|Chicken]
+[Quality, Highest, First or Second, Highest|First|Second]
