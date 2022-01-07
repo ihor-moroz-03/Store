@@ -4,4 +4,22 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="categories.txt" />
+    <None Remove="detailFormats.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="categories.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="detailFormats.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
+  </ItemGroup>
+
 </Project>

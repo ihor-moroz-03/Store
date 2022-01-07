@@ -1,4 +1,5 @@
 ﻿using System;
+using StoreDB;
 
 namespace StoreLogic.Users
 {
@@ -10,6 +11,14 @@ namespace StoreLogic.Users
         {
             _store = store;
         }
+
+        public IUser CreateUser(UserModel user) => user.Role switch
+        {
+            "Admin" => CreateUser<IAdmin>(user.Username, user.PasswordHash),
+            "Moderator" => CreateUser<IModerator>(user.Username, user.PasswordHash),
+            "Customer" => CreateUser<ICustomer>(user.Username, user.PasswordHash),
+            _ => throw new ArgumentException("Invalid user role")
+        };
 
         public TUser CreateUser<TUser>(string username, int passwordHash) where TUser : class, IUser
         {
